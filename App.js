@@ -2,18 +2,32 @@ import React, { Component } from "react"
 import "./App.css"
 import Post from "./Post"
 
-export default class App extends Component {
+export default class App extends Component { 
+  state = {
+    title : 'Help Computer',
+    author : 'Klem Bradly',
+    body : 'this is a body of my post. It is rather un-eventful since i am a computer.'
+  }
+
+  handleClick = (event) => {
+    let newPost = prompt('Type the new Post here')
+    this.setState({
+        body : newPost
+    })
+  }
+
   render() {
     return (
       <div className='App'>
         <Post
-          title='this is a title'
-          author='this is an author'
-          body='this is a body'
-          comments='this is a comment'
+          title = {this.state.title}
+          author={this.state.author}
+          body={this.state.body}
         />
+        <button onClick={this.handleClick}>
+          edit
+        </button>
       </div>
     )
   }
 }
-  
